@@ -43,20 +43,20 @@ const CardList: React.FC = () => {
           onChange={handleCitiesChangeSelect}
           options={cityOptions}
         />
-
-        <Button
-          block
-          onClick={handleResetFilters}
-          style={{ marginBottom: "1rem" }}
-        >
-          Reset filters
-        </Button>
       </Flex>
 
       {filteredData?.length === 0 ? (
-        <Empty />
+        <Empty>
+          <Button
+            block
+            onClick={handleResetFilters}
+            style={{ marginBottom: "1rem", maxWidth: "150px" }}
+          >
+            Reset filters
+          </Button>
+        </Empty>
       ) : (
-        <Flex wrap gap={10} justify="center" style={{ paddingBottom: "1rem" }}>
+        <Flex wrap gap={20} justify="center" style={{ paddingBottom: "1rem" }}>
           {filteredData?.map(user => <UserCard key={user.id} {...user} />)}
         </Flex>
       )}
